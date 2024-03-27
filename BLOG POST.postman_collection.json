@@ -1,0 +1,1467 @@
+{
+	"info": {
+		"_postman_id": "6fde9d5e-8e20-450d-964a-e713c99e48d9",
+		"name": "Temp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28022727",
+		"_collection_link": "https://cloudy-sunset-568381.postman.co/workspace/Fikia-Workspace~d03a4ff3-2ed2-466b-9892-464429745017/collection/28022727-6fde9d5e-8e20-450d-964a-e713c99e48d9?action=share&source=collection_link&creator=28022727"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();",
+									"pm.globals.set(\"accessToken\", response?.data?.accessToken || '');",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"shameekh@gmail.com\",  // Required Email\n    \"password\":\"Password123\"    // Required string\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "### Auth Login\n\nThis endpoint allows users to log in and obtain access and refresh tokens.\n\n#### Request Body\n\n- email (text, required): The email of the user.\n- password (text, required): The password of the user.\n    \n\n#### Response\n\n- Status: 201 Created\n- Content-Type: application/json\n- statusCode (number): Indicates the status of the response.\n- message (array): An array of messages, if any.\n- data (object): Contains user information, access token, and refresh token.\n    - user (object): User details including ID, name, email, role, phone number, profile picture, uniID, and status.\n    - accessToken (string): The access token for authentication.\n    - refreshToken (string): The refresh token for obtaining a new access token.\n\n#### Example Response\n\n``` json\n{\n    \"statusCode\": 0,\n    \"message\": [\"\"],\n    \"data\": {\n        \"user\": {\n            \"_id\": \"\",\n            \"firstName\": \"\",\n            \"lastName\": \"\",\n            \"email\": \"\",\n            \"role\": \"\",\n            \"phoneNumber\": \"\",\n            \"profilePicture\": \"\",\n            \"uniID\": \"\",\n            \"status\": \"\"\n        },\n        \"accessToken\": \"\",\n        \"refreshToken\": \"\"\n    }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"shameekh3@gmail.com\",  // Required Email\n    \"password\":\"Password123\"    // Required string\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1131"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46b-22w/lvt3cBSYsKISc7jOmkvl4Xk\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Mar 2024 23:08:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"message\": [\n        \"Success\"\n    ],\n    \"data\": {\n        \"user\": {\n            \"_id\": \"6604a6bdec6aa114f453ce9d\",\n            \"firstName\": \"Candace\",\n            \"lastName\": \"Schulist\",\n            \"email\": \"shameekh3@gmail.com\",\n            \"profilePicture\": \"uploads/1711580861466-newFile.png\",\n            \"phoneNumber\": \"+923216267584\",\n            \"status\": \"pending\",\n            \"dislikedPosts\": [],\n            \"likedPosts\": [],\n            \"__v\": 0\n        },\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY2MDRhNmJkZWM2YWExMTRmNDUzY2U5ZCIsImZpcnN0TmFtZSI6IkNhbmRhY2UiLCJsYXN0TmFtZSI6IlNjaHVsaXN0IiwiZW1haWwiOiJzaGFtZWVraDNAZ21haWwuY29tIiwicGhvbmVOdW1iZXIiOiIrOTIzMjE2MjY3NTg0IiwicHJvZmlsZVBpY3R1cmUiOiJ1cGxvYWRzLzE3MTE1ODA4NjE0NjYtbmV3RmlsZS5wbmcifSwiaWF0IjoxNzExNTgwOTE5LCJleHAiOjE3MTE2NjczMTl9.g9aRQDNtA_vHzTd9HJ1slZtvZJdHr_xeMapUXDMThow\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY2MDRhNmJkZWM2YWExMTRmNDUzY2U5ZCIsImZpcnN0TmFtZSI6IkNhbmRhY2UiLCJsYXN0TmFtZSI6IlNjaHVsaXN0IiwiZW1haWwiOiJzaGFtZWVraDNAZ21haWwuY29tIiwicGhvbmVOdW1iZXIiOiIrOTIzMjE2MjY3NTg0IiwicHJvZmlsZVBpY3R1cmUiOiJ1cGxvYWRzLzE3MTE1ODA4NjE0NjYtbmV3RmlsZS5wbmcifSwiaWF0IjoxNzExNTgwOTE5LCJleHAiOjE3MTE2NjczMTl9.g9aRQDNtA_vHzTd9HJ1slZtvZJdHr_xeMapUXDMThow\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "firstName",
+									"value": "{{$randomFirstName}}",
+									"description": "Required String",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "{{$randomLastName}}",
+									"description": "Required String",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "shameekh3@gmail.com",
+									"description": "Required Email",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Password123",
+									"description": "Required String",
+									"type": "text"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "+923216267584",
+									"description": "Required Number",
+									"type": "text"
+								},
+								{
+									"key": "profilePicture",
+									"description": "Optional image file",
+									"type": "file",
+									"src": "/home/shameekh/Pictures/Screenshots/Screenshot from 2024-03-27 22-15-08.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"signup"
+							]
+						},
+						"description": "\n    \n## Auth Signup\n\nThis endpoint allows the user to sign up by providing necessary information.\n\n### Request Body Parameters\n- `firstName` (text, required): The first name of the user.\n- `lastName` (text, required): The last name of the user.\n- `email` (text, required): The email address of the user.\n- `password` (text, required): The password for the user account.\n- `phoneNumber` (text, required): The phone number of the user.\n- `role` (text, required): The role of the user.\n- `languages` (text, optional): The languages known by the user.\n- `dateOfBirth` (text, required if role is student): The date of birth of the user.\n- `gender` (text, required if role is student): The gender of the user.\n- `location` (text, required if role is student): The location of the user.\n- `profilePicture` (file, optional): The profile picture of the user.\n\n### Response\n- Status: 201\n- Content-Type: application/json\n- Body: \n    ```\n    {\n        \"statusCode\": 0,\n        \"message\": [\"\"],\n        \"data\": {\n            \"_id\": \"\"\n        }\n    }\n    ```\n\n### Example Response\n```\n{\n    \"statusCode\": 0,\n    \"message\": [\"\"],\n    \"data\": {\n        \"_id\": \"\"\n    }\n}\n```\n\n"
+					},
+					"response": [
+						{
+							"name": "Signup",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "firstName",
+											"value": "{{$randomFirstName}}",
+											"description": "Required String",
+											"type": "text"
+										},
+										{
+											"key": "lastName",
+											"value": "{{$randomLastName}}",
+											"description": "Required String",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "shameekh2@gmail.com",
+											"description": "Required Email",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Password123",
+											"description": "Required String",
+											"type": "text"
+										},
+										{
+											"key": "phoneNumber",
+											"value": "+923216267584",
+											"description": "Required Number",
+											"type": "text"
+										},
+										{
+											"key": "profilePicture",
+											"description": "Optional image file",
+											"type": "file",
+											"src": "/home/shameekh/Pictures/Screenshots/Screenshot from 2024-03-27 22-15-08.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/auth/signup",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "82"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"52-WcghJicB+woOs6FJVuUDzrugI20\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Mar 2024 23:05:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"message\": [\n        \"Success\"\n    ],\n    \"data\": {\n        \"_id\": \"6604a64fec6aa114f453ce9a\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "Everyone on the app is a user so every one authenticates from here"
+		},
+		{
+			"name": "Blog Posts",
+			"item": [
+				{
+					"name": "New Post",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Regular testing 2",
+									"description": "Required",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "{{$randomLoremSentences}}",
+									"description": "Required",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"description": "Optional",
+									"type": "file",
+									"src": [
+										"postman-cloud:///1eeec8f4-5d35-43e0-85e8-2e5cdd0c3d3c",
+										"/home/shameekh/Pictures/Screenshots/Screenshot from 2024-03-25 21-44-37.png"
+									]
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/post/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"post",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Post",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Regular testing 2",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "{{$randomLoremSentences}}",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "images",
+											"description": "Optional",
+											"type": "file",
+											"src": [
+												"postman-cloud:///1eeec8f4-5d35-43e0-85e8-2e5cdd0c3d3c",
+												"/home/shameekh/Pictures/Screenshots/Screenshot from 2024-03-25 21-44-37.png"
+											]
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/post/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"post",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "82"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"52-60ua3rLMp+sYTek9y6iQRh53g6w\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Mar 2024 23:11:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"message\": [\n        \"Success\"\n    ],\n    \"data\": {\n        \"_id\": \"6604a7aaec6aa114f453cea5\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Edit Post",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Editing\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/post/:postID",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"post",
+								":postID"
+							],
+							"variable": [
+								{
+									"key": "postID",
+									"value": "6604a7aaec6aa114f453cea5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Edit Post",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"Editing\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/post/:postID",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"post",
+										":postID"
+									],
+									"variable": [
+										{
+											"key": "postID",
+											"value": "6604a7aaec6aa114f453cea5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "565"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"235-o8KbvkwT6qxbx2zN/wH8D24L4T8\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Mar 2024 23:39:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": [\n        \"Success\"\n    ],\n    \"data\": {\n        \"_id\": \"6604a7aaec6aa114f453cea5\",\n        \"content\": \"Sit et nulla reprehenderit qui. Incidunt quo molestiae qui. Eum error eaque omnis corrupti officia enim. Eius maiores sed repellat voluptatibus. Voluptatem voluptatem quia sint velit error facilis dignissimos.\",\n        \"images\": [\n            \"uploads/1711581098859-newFile.png\",\n            \"uploads/1711581098859-newFile.png\"\n        ],\n        \"title\": \"Editing\",\n        \"owner\": \"6604a639ec6aa114f453ce97\",\n        \"likedBy\": [\n            \"6604a6bdec6aa114f453ce9d\"\n        ],\n        \"createdAt\": \"2024-03-27T23:11:38.866Z\",\n        \"updatedAt\": \"2024-03-27T23:11:38.866Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all posts of a user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/post/user/:userID?limit=2&page=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"post",
+								"user",
+								":userID"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							],
+							"variable": [
+								{
+									"key": "userID",
+									"value": "6604a639ec6aa114f453ce97"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all posts of a user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer  {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/post/user/:userID?limit=2&page=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"post",
+										"user",
+										":userID"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "2"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									],
+									"variable": [
+										{
+											"key": "userID",
+											"value": "6604a639ec6aa114f453ce97"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "679"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a7-jAQUko8Lurs6PKobbSugWbulfLM\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Mar 2024 23:14:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": [\n        \"Success\"\n    ],\n    \"data\": [\n        {\n            \"_id\": \"6604a7aaec6aa114f453cea5\",\n            \"content\": \"Sit et nulla reprehenderit qui. Incidunt quo molestiae qui. Eum error eaque omnis corrupti officia enim. Eius maiores sed repellat voluptatibus. Voluptatem voluptatem quia sint velit error facilis dignissimos.\",\n            \"images\": [\n                \"uploads/1711581098859-newFile.png\",\n                \"uploads/1711581098859-newFile.png\"\n            ],\n            \"title\": \"Regular testing 2\",\n            \"owner\": {\n                \"_id\": \"6604a639ec6aa114f453ce97\",\n                \"firstName\": \"Chaya\",\n                \"lastName\": \"Hahn\",\n                \"email\": \"shameekh@gmail.com\",\n                \"profilePicture\": \"uploads/1711580729715-newFile.png\"\n            },\n            \"likedBy\": [],\n            \"createdAt\": \"2024-03-27T23:11:38.866Z\",\n            \"updatedAt\": \"2024-03-27T23:11:38.866Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Hide a post",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/user/hidePost/:postID",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"hidePost",
+								":postID"
+							],
+							"variable": [
+								{
+									"key": "postID",
+									"value": "6604a7aaec6aa114f453cea5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Hide a post",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer  {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/user/hidePost/:postID",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"user",
+										"hidePost",
+										":postID"
+									],
+									"variable": [
+										{
+											"key": "postID",
+											"value": "6604a7aaec6aa114f453cea5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-M9iubB/SleZ7C9Vib4hQ1Nt7K4U\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Mar 2024 23:28:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": [\n        \"Success\"\n    ],\n    \"data\": {\n        \"message\": [\n            \"Success\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Like Post",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/post/like/:postID",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"post",
+								"like",
+								":postID"
+							],
+							"variable": [
+								{
+									"key": "postID",
+									"value": "6604a7aaec6aa114f453cea5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get blog posts feed",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/post/feed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"post",
+								"feed"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get blog posts feed",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/post/feed",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"post",
+										"feed"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3044"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"be4-AYTx52p2FLG+V5S4xuBzZcgfXH4\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Mar 2024 23:40:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": [\n        \"Success\"\n    ],\n    \"data\": [\n        {\n            \"_id\": \"6604a797ec6aa114f453cea0\",\n            \"content\": \"Reiciendis aut necessitatibus delectus et. Illo explicabo et dolore qui repudiandae. Deleniti non maiores est. Velit facere voluptatem. Dicta voluptatem natus. Commodi repudiandae dolor autem libero ducimus fuga beatae.\",\n            \"images\": [\n                \"uploads/1711581079346-newFile.png\",\n                \"uploads/1711581079346-newFile.png\"\n            ],\n            \"title\": \"Regular testing\",\n            \"owner\": {\n                \"_id\": \"6604a6bdec6aa114f453ce9d\",\n                \"firstName\": \"Candace\",\n                \"lastName\": \"Schulist\",\n                \"email\": \"shameekh3@gmail.com\",\n                \"profilePicture\": \"uploads/1711580861466-newFile.png\"\n            },\n            \"likedBy\": [],\n            \"createdAt\": \"2024-03-27T23:11:19.349Z\",\n            \"updatedAt\": \"2024-03-27T23:11:19.349Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6604a7a0ec6aa114f453cea2\",\n            \"content\": \"Officia est occaecati eum rerum non ut error facere. Sit est aliquid cumque. Quae fuga dolore debitis.\",\n            \"images\": [\n                \"uploads/1711581088047-newFile.png\",\n                \"uploads/1711581088048-newFile.png\"\n            ],\n            \"title\": \"Regular testing 2\",\n            \"owner\": {\n                \"_id\": \"6604a6bdec6aa114f453ce9d\",\n                \"firstName\": \"Candace\",\n                \"lastName\": \"Schulist\",\n                \"email\": \"shameekh3@gmail.com\",\n                \"profilePicture\": \"uploads/1711580861466-newFile.png\"\n            },\n            \"likedBy\": [],\n            \"createdAt\": \"2024-03-27T23:11:28.049Z\",\n            \"updatedAt\": \"2024-03-27T23:11:28.049Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6604a7aaec6aa114f453cea5\",\n            \"content\": \"Sit et nulla reprehenderit qui. Incidunt quo molestiae qui. Eum error eaque omnis corrupti officia enim. Eius maiores sed repellat voluptatibus. Voluptatem voluptatem quia sint velit error facilis dignissimos.\",\n            \"images\": [\n                \"uploads/1711581098859-newFile.png\",\n                \"uploads/1711581098859-newFile.png\"\n            ],\n            \"title\": \"Editing\",\n            \"owner\": {\n                \"_id\": \"6604a639ec6aa114f453ce97\",\n                \"firstName\": \"Chaya\",\n                \"lastName\": \"Hahn\",\n                \"email\": \"shameekh@gmail.com\",\n                \"profilePicture\": \"uploads/1711580729715-newFile.png\"\n            },\n            \"likedBy\": [\n                \"6604a6bdec6aa114f453ce9d\"\n            ],\n            \"createdAt\": \"2024-03-27T23:11:38.866Z\",\n            \"updatedAt\": \"2024-03-27T23:11:38.866Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6604a8a679fe6fc44fbbbb31\",\n            \"content\": \"Dolorem inventore impedit. Qui in dignissimos dolorem non enim sunt. Qui odio fugiat. Soluta et nostrum ratione quia consequatur dolore sint. Illum aut praesentium autem voluptas aut molestiae.\",\n            \"images\": [\n                \"uploads/1711581350763-newFile.png\",\n                \"uploads/1711581350763-newFile.png\"\n            ],\n            \"title\": \"Post\",\n            \"owner\": {\n                \"_id\": \"6604a64fec6aa114f453ce9a\",\n                \"firstName\": \"Anahi\",\n                \"lastName\": \"Rodriguez\",\n                \"email\": \"shameekh2@gmail.com\",\n                \"profilePicture\": \"uploads/1711580751295-newFile.png\"\n            },\n            \"likedBy\": [],\n            \"createdAt\": \"2024-03-27T23:15:50.769Z\",\n            \"updatedAt\": \"2024-03-27T23:15:50.769Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6604a8a979fe6fc44fbbbb33\",\n            \"content\": \"Debitis impedit inventore voluptatem est. Eligendi dicta modi quo ipsum non porro accusamus. Molestiae officiis quia ex. Et accusamus necessitatibus sed.\",\n            \"images\": [\n                \"uploads/1711581353387-newFile.png\",\n                \"uploads/1711581353387-newFile.png\"\n            ],\n            \"title\": \"Most\",\n            \"owner\": {\n                \"_id\": \"6604a64fec6aa114f453ce9a\",\n                \"firstName\": \"Anahi\",\n                \"lastName\": \"Rodriguez\",\n                \"email\": \"shameekh2@gmail.com\",\n                \"profilePicture\": \"uploads/1711580751295-newFile.png\"\n            },\n            \"likedBy\": [],\n            \"createdAt\": \"2024-03-27T23:15:53.388Z\",\n            \"updatedAt\": \"2024-03-27T23:15:53.388Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"description": "These are all APIs relevant to posting and can be accessed by anyone mod or student"
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Add  a comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postID\": \"6604a797ec6aa114f453cea0\",\n    \"content\": \"Commenting AGAIN on your post\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"comment"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add  a comment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"postID\": \"6604a797ec6aa114f453cea0\",\n    \"content\": \"Commenting on your post\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/comment",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"comment"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "82"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"52-iK4TMfbEpm5xy2jUvtnK0Hj2rog\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Mar 2024 23:48:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"message\": [\n        \"Success\"\n    ],\n    \"data\": {\n        \"_id\": \"6604b0525d0658799e4f825a\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all comments of a post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/comment/post/:postID",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"comment",
+								"post",
+								":postID"
+							],
+							"variable": [
+								{
+									"key": "postID",
+									"value": "6604a797ec6aa114f453cea0"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all comments of a post",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/comment/post/:postID",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"comment",
+										"post",
+										":postID"
+									],
+									"variable": [
+										{
+											"key": "postID",
+											"value": "6604a797ec6aa114f453cea0"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "782"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"30e-wBf3wEUk8hp1VM+BOc/KX6tXnrc\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Mar 2024 23:49:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": [\n        \"Success\"\n    ],\n    \"data\": {\n        \"comments\": [\n            {\n                \"_id\": \"6604b0525d0658799e4f825a\",\n                \"postID\": \"6604a797ec6aa114f453cea0\",\n                \"userID\": {\n                    \"_id\": \"6604a639ec6aa114f453ce97\",\n                    \"firstName\": \"Chaya\",\n                    \"lastName\": \"Hahn\",\n                    \"email\": \"shameekh@gmail.com\",\n                    \"profilePicture\": \"uploads/1711580729715-newFile.png\"\n                },\n                \"content\": \"Commenting on your post\",\n                \"createdAt\": \"2024-03-27T23:48:34.481Z\",\n                \"updatedAt\": \"2024-03-27T23:48:34.485Z\",\n                \"__v\": 0\n            },\n            {\n                \"_id\": \"6604b084ca49fe2244a16964\",\n                \"postID\": \"6604a797ec6aa114f453cea0\",\n                \"userID\": {\n                    \"_id\": \"6604a639ec6aa114f453ce97\",\n                    \"firstName\": \"Chaya\",\n                    \"lastName\": \"Hahn\",\n                    \"email\": \"shameekh@gmail.com\",\n                    \"profilePicture\": \"uploads/1711580729715-newFile.png\"\n                },\n                \"content\": \"Commenting AGAIN on your post\",\n                \"createdAt\": \"2024-03-27T23:49:24.868Z\",\n                \"updatedAt\": \"2024-03-27T23:49:24.868Z\",\n                \"__v\": 0\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get single comment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/comment/:commentID",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"comment",
+								":commentID"
+							],
+							"variable": [
+								{
+									"key": "commentID",
+									"value": "6604b0525d0658799e4f825a"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get single comment",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/comment/:commentID",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"comment",
+										":commentID"
+									],
+									"variable": [
+										{
+											"key": "commentID",
+											"value": "6604b0525d0658799e4f825a"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "288"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"120-kzoy3aeGM8XRUWaWH+OWKA6avLQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Mar 2024 23:49:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": [\n        \"Success\"\n    ],\n    \"data\": {\n        \"comment\": {\n            \"_id\": \"6604b0525d0658799e4f825a\",\n            \"postID\": \"6604a797ec6aa114f453cea0\",\n            \"userID\": \"6604a639ec6aa114f453ce97\",\n            \"content\": \"Commenting on your post\",\n            \"createdAt\": \"2024-03-27T23:48:34.481Z\",\n            \"updatedAt\": \"2024-03-27T23:48:34.485Z\",\n            \"__v\": 0\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a comment",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"Comment Content Updated \"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/comment/:commentID",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"comment",
+								":commentID"
+							],
+							"variable": [
+								{
+									"key": "commentID",
+									"value": "6604b0525d0658799e4f825a"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update a comment",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"content\": \"Comment Content Updated \"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/comment/:commentID",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"comment",
+										":commentID"
+									],
+									"variable": [
+										{
+											"key": "commentID",
+											"value": "6604b0525d0658799e4f825a"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "277"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"115-47YTOT1T4mIB/tagBbQw8mntt5k\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Mar 2024 23:55:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": [\n        \"Success\"\n    ],\n    \"data\": {\n        \"_id\": \"6604b0525d0658799e4f825a\",\n        \"postID\": \"6604a797ec6aa114f453cea0\",\n        \"userID\": \"6604a639ec6aa114f453ce97\",\n        \"content\": \"Comment Content Updated \",\n        \"createdAt\": \"2024-03-27T23:48:34.481Z\",\n        \"updatedAt\": \"2024-03-27T23:48:34.485Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a comment",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/comment/:commentID",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"comment",
+								":commentID"
+							],
+							"variable": [
+								{
+									"key": "commentID",
+									"value": "6604b084ca49fe2244a16964"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete a comment",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/comment/:commentID",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"comment",
+										":commentID"
+									],
+									"variable": [
+										{
+											"key": "commentID",
+											"value": "6604b084ca49fe2244a16964"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-M9iubB/SleZ7C9Vib4hQ1Nt7K4U\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Mar 2024 23:56:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": [\n        \"Success\"\n    ],\n    \"data\": {\n        \"message\": [\n            \"Success\"\n        ]\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
